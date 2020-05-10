@@ -30,7 +30,7 @@ steps:
   displayName: Restore
   inputs: 
      command: restore
-     projects: '*.sln'
+     projects: '**WebApp/*.sln'
 
 - task: DotNetCoreCLI@2
   displayName: Build
@@ -45,4 +45,4 @@ steps:
      command: test
      projects: '**Test/*.csproj'
      arguements: '--configuration $(buildConfiguration)'
-
+     publishTestResults: true
