@@ -9,7 +9,7 @@ trigger:
 pool:
   name: Azure Pipelines
   vmImage: 'ubuntu-16.04'
-  
+
 variables:
   buildConfiguration: 'Release'
   buildProjects: 'WebApp/*.csproj'
@@ -47,6 +47,7 @@ steps:
   displayName: 'Publish Artifact'
   inputs:
     PathtoPublish: '$(build.artifactstagingdirectory)'
+    ArtifactName: WebApp
   condition: succeededOrFailed()
 
 
