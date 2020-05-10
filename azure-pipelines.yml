@@ -36,5 +36,6 @@ steps:
   displayName: Build
   inputs: 
      command: build
-     projects: '*.sln'
+     projects: 'WebApp/*.csproj'
      arguements: '--configuration Release'
+
