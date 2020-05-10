@@ -43,6 +43,6 @@ steps:
   displayName: 'Test'
   inputs:
      command: test
-     projects: '**/UnitTest*.csproj'
+     projects: '**Test/*.csproj'
      arguements: '--configuration $(buildConfiguration)'
-     
+
