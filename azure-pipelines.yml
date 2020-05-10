@@ -59,4 +59,3 @@ steps:
   displayName: Publish Artifacts
   inputs: 
      pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-     artifactName: 'WebApp.zip'
