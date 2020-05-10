@@ -54,8 +54,3 @@ steps:
     publishWebProjects: true
     arguements: '--configuration Release --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: true
-
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: $(Build.ArtifactStagingDirectory)/bin/WebApp
-    artifactName: WebApp
