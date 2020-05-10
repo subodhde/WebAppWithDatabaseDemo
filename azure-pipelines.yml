@@ -39,3 +39,10 @@ steps:
      projects: 'WebApp/*.csproj'
      arguements: '--configuration Release'
 
+- task: DotNetCoreCLI@2
+  displayName: 'Test'
+  inputs:
+     command: test
+     projects: '**/UnitTest*.csproj'
+     arguements: '--configuration $(buildConfiguration)'
+     
