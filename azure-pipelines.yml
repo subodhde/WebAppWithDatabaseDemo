@@ -46,3 +46,16 @@ steps:
      projects: '**Test/*.csproj'
      arguements: '--configuration $(buildConfiguration)'
      publishTestResults: true
+
+- task: DotNetCoreCLI@2
+  displayName: 'Publish'
+  inputs:
+    command: publish
+    publishWebProjects: true
+    arguements: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArchitects@1
+  displayName: Publish Artifacts
+  inputs: 
+     pathtoPublish: '$(Build.ArtifactsStagingDirectory)'
+     artifactName: 'WebApp'
