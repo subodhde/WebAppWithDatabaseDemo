@@ -4,14 +4,37 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 trigger:
-- master
+- '*'
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'vs2017-win2016'
 
 variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+
+- task: UseDotNet@2
+  inputs: 
+    version: 3.0.x
+  displayName: 'Install .Net SDK 3.0.x'
+
+- task: UseDotNet@2
+  inputs:
+    version: 2.2.x
+    packageType: runtime
+  displayName: 'Install .Net SDK 2.2.x'
+
+    '
+- task: DotNetCoreCLI@2
+  displayName: Restore
+  inputs: 
+     command: restore
+     projects: '*.sln'
+
+- task: DotNetCoreCLI@2
+  displayName: Build
+  inputs: 
+     command: build
+     projects: '*.sln'
+     arguements: '--configuration Release'
