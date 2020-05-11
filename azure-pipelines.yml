@@ -14,6 +14,8 @@ variables:
   buildConfiguration: 'Release'
   buildProjects: 'WebApp/*.csproj'
   unitTest: 'WebApp*[Tt]est/*.csproj'
+  subscriptionAccount: 'Visual Studio Enterprise Subscription (13d31264-17e6-4ba7-9ee8-6fdc87d6a4ee)'
+  applicationName: 'webappwithdatabase-demo'
 
 steps:
 - task: DotNetCoreCLI@2
@@ -53,7 +55,7 @@ steps:
 - task: AzureWebApp@1
   displayName: Deploy Azure Web App
   inputs:
-    azureSubscription: 'Visual Studio Enterprise Subscription (13d31264-17e6-4ba7-9ee8-6fdc87d6a4ee)'
-    appName: 'webappwithdatabase-demo'
+    azureSubscription: '$(subscriptionAccount)'
+    appName: '$(applicationName)'
     package: $(build.artifactstagingdirectory)/**/*.zip    
 
